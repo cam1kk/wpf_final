@@ -10,24 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using wpf_final.ViewModels;
 
 namespace wpf_final.Views
 {
-    public partial class MainWindow : Window
+    /// <summary>
+    /// Interaction logic for RegistrationWindow.xaml
+    /// </summary>
+    public partial class RegistrationWindow : Window
     {
-        public MainWindow()
+        public RegistrationWindow()
         {
             InitializeComponent();
-            DataContext = new MainViewModel();
-        }
-
-        private void RegistrationButton_Click(object sender, RoutedEventArgs e)
-        {
-            RegistrationWindow registrationWindow = new RegistrationWindow();
-            registrationWindow.Show();
         }
     }
 }

@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="İmage\icon1.png" />
+    <None Remove="İmage\leaderboards.png" />
+    <None Remove="İmage\login.png" />
+    <None Remove="İmage\registration.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,7 +30,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="İmage\icon1.png" />
+    <Resource Include="İmage\leaderboards.png" />
+    <Resource Include="İmage\login.png" />
+    <Resource Include="İmage\registration.png" />
   </ItemGroup>
 
 </Project>
