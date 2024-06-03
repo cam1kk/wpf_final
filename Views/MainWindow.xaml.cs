@@ -26,8 +26,20 @@ namespace wpf_final.Views
 
         private void RegistrationButton_Click(object sender, RoutedEventArgs e)
         {
-            RegistrationWindow registrationWindow = new RegistrationWindow();
-            registrationWindow.Show();
+            RegistrationLoginWindow registrationloginWindow = new RegistrationLoginWindow();
+            registrationloginWindow.Show();
         }
+
+        private void LeaderboardsButton_Click(object sender, RoutedEventArgs e)
+        {
+            LeaderboardsWindow leaderboardsWindow = new LeaderboardsWindow();
+            leaderboardsWindow.Show();
+        }
+        private void AccountButton_Click(object sender, RoutedEventArgs e)
+        {
+            PersonalAccountWindow personalAccountWindow = new PersonalAccountWindow();
+            personalAccountWindow.Show();
+        }
+        
     }
 }

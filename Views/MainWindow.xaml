@@ -3,12 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Guess the Number" Height="350" Width="525">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#bedfff" Offset="0.1" />
+                <GradientStop Color="#3E9CF3" Offset="0.3" />
+                <GradientStop Color="#889bd3" Offset="0.7" />
+                <GradientStop Color="#424e74" Offset="1.0" />
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <!--new-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
@@ -16,44 +23,43 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="0" Grid.Row="0" Width="40" Height="40" Margin="5 5 5 5" Click="RegistrationButton_Click">
+        <Button Grid.Column="0" Grid.Row="0" Width="40" Height="40" Margin="5 5 5 5" Click="RegistrationButton_Click" Background="#424e74">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/İmage/registration.png" Width="30" Height="30"/>
             </StackPanel>
         </Button>
-        <Button Grid.Column="1" Grid.Row="0" Width="40" Height="40" Margin="5 5 5 5">
+        <Button Grid.Column="1" Grid.Row="0" Width="40" Height="40" Margin="5 5 5 5" Background="#424e74" Click="AccountButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/İmage/login.png" Width="30" Height="30"/>
             </StackPanel>
         </Button>
-        <Button Grid.Column="0" Grid.Row="1" Width="40" Height="40" Margin="5 5 5 5">
+        <Button Grid.Column="0" Grid.Row="1" Width="40" Height="40" Margin="5 5 5 5" Click="LeaderboardsButton_Click" Background="#424e74">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/İmage/leaderboards.png" Width="30" Height="30"/>
             </StackPanel>
         </Button>
-        <Button Grid.Column="3" Grid.Row="0" Width="40" Height="40" Margin="5 5 5 5">
+        <Button Grid.Column="3" Grid.Row="0" Width="40" Height="40" Margin="5 5 5 5" Background="#424e74">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/İmage/icon3.png" Width="30" Height="30"/>
             </StackPanel>
         </Button>
-        <Button Grid.Column="4" Grid.Row="0" Width="40" Height="40" Margin="5 5 5 5">
+        <Button Grid.Column="4" Grid.Row="0" Width="40" Height="40" Margin="5 5 5 5" Background="#424e74">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/İmage/icon5.png" Width="30" Height="30"/>
             </StackPanel>
         </Button>
-        <Button Grid.Column="3" Grid.Row="1" Width="40" Height="40" Margin="5 5 5 5">
+        <Button Grid.Column="3" Grid.Row="1" Width="40" Height="40" Margin="5 5 5 5" Background="#424e74">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/İmage/icon7.png" Width="30" Height="30"/>
             </StackPanel>
         </Button>
-        <Button Grid.Column="4" Grid.Row="1" Width="40" Height="40" Margin="5 5 5 5">
+        <Button Grid.Column="4" Grid.Row="1" Width="40" Height="40" Margin="5 5 5 5" Background="#424e74">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/İmage/icon9.png" Width="30" Height="30"/>
             </StackPanel>
         </Button>
-        <!--new-->
         <TextBox x:Name="GuessTextBox" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30,0,0" Text="{Binding UserGuess, UpdateSourceTrigger=PropertyChanged}" FontSize="20" Grid.Column="2"/>
-        <Button Content="Check" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,10" Command="{Binding CheckCommand}" Grid.Row="1" Grid.Column="2"/>
+        <Button Content="Check" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,10" Command="{Binding CheckCommand}" Grid.Row="1" Grid.Column="2" Background="#424e74" Foreground="#bedfff" FontWeight="Bold" FontSize="18"/>
         <ScrollViewer Grid.Row="2" Grid.Column="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
             <ItemsControl ItemsSource="{Binding GuessResults}">
                 <ItemsControl.ItemTemplate>

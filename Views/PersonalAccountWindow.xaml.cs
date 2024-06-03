@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace wpf_final.Views
 {
     /// <summary>
-    /// Interaction logic for RegistrationWindow.xaml
+    /// Interaction logic for PersonalAccountWindow.xaml
     /// </summary>
-    public partial class RegistrationWindow : Window
+    public partial class PersonalAccountWindow : Window
     {
-        public RegistrationWindow()
+        public PersonalAccountWindow()
         {
             InitializeComponent();
         }
