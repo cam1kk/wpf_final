@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using wpf_final.Commands;
 using wpf_final.Models;
+using wpf_final.Views;
 
 namespace wpf_final.ViewModels
 {
@@ -16,6 +18,68 @@ namespace wpf_final.ViewModels
         private string _userGuess = string.Empty;
         private bool _canClear = false;
         private int _gameMode;
+        private int _rbh;
+        private int _rbw;
+        private Thickness _rbm;
+        private int _abh;
+        private int _abw;
+        private Thickness _abm;
+
+        public int RBH
+        {
+            get => _rbh;
+            set
+            {
+                _rbh = value;
+                OnPropertyChanged(new PropertyChangedEventArgs(nameof(RBH)));
+            }
+        }
+        public int RBW
+        {
+            get => _rbh;
+            set
+            {
+                _rbw = value;
+                OnPropertyChanged(new PropertyChangedEventArgs(nameof(RBW)));
+            }
+        }
+        public int ABH
+        {
+            get => _abh;
+            set
+            {
+                _abh = value;
+                OnPropertyChanged(new PropertyChangedEventArgs(nameof(ABH)));
+            }
+        }
+        public int ABW
+        {
+            get => _abh;
+            set
+            {
+                _abw = value;
+                OnPropertyChanged(new PropertyChangedEventArgs(nameof(ABW)));
+            }
+        }
+        public Thickness RBM
+        {
+            get => _rbm;
+            set
+            {
+                _rbm = value;
+                OnPropertyChanged(new PropertyChangedEventArgs(nameof(RBM)));
+            }
+        }
+        public Thickness ABM
+        {
+            get => _abm;
+            set
+            {
+                _abm = value;
+                OnPropertyChanged(new PropertyChangedEventArgs(nameof(ABM)));
+            }
+        }
+
         public ObservableCollection<ObservableCollection<GuessResult>> GuessResults { get; set; }
 
         public string UserGuess
@@ -33,11 +97,14 @@ namespace wpf_final.ViewModels
         public ICommand FiveCommand { get; }
         public ICommand SevenCommand { get; }
         public ICommand NineCommand { get; }
+        public ICommand RegistrationCommand { get; }
+        public ICommand AccountCommand { get; }
+        public ICommand LeaderboardsCommand { get; }
         private int attempts = 0;
 
-        public User User { get; set; } = new User() { Username = string.Empty};
+        private User _user = new User() { Username = string.Empty };
 
-        public MainViewModel(int gameMode)
+        public MainViewModel(int gameMode, User user)
         {
             _model = new GuessNumberModel(_gameMode);
             _gameMode = gameMode;
@@ -47,13 +114,61 @@ namespace wpf_final.ViewModels
             FiveCommand = new DelegateCommand(ChangeModeToFive);
             SevenCommand = new DelegateCommand(ChangeModeToSeven);
             NineCommand = new DelegateCommand(ChangeModeToNine);
-            this.User = User;
+            RegistrationCommand = new DelegateCommand(OpenRegistrationView);
+            AccountCommand = new DelegateCommand(OpenAccountView);
+            LeaderboardsCommand = new DelegateCommand(OpenLeaderboardsView);
+            _user = user;
+            ABH = 0;
+            ABW = 0;
+            ABM = new Thickness(0, 0, 0, 0);
+            RBH = 40;
+            RBW = 40;
+            RBM = new Thickness(5, 5, 5, 5);
+        }
+
+        private void OpenLeaderboardsView()
+        {
+            LeaderboardsWindow leaderboardsWindow = new LeaderboardsWindow(_gameMode);
+            leaderboardsWindow.ShowDialog();
+        }
+
+        private void OpenAccountView()
+        {
+            PersonalAccountWindow personalAccountWindow = new PersonalAccountWindow(_user, _gameMode);
+            personalAccountWindow.ShowDialog();
+            if (personalAccountWindow.isLoggedOut)
+            {
+                _user = new User() { Username = string.Empty };
+                ABH = 0;
+                ABW = 0;
+                ABM = new Thickness(0, 0, 0, 0);
+                RBH = 40;
+                RBW = 40;
+                RBM = new Thickness(5, 5, 5, 5);
+            }
+        }
+
+        private void OpenRegistrationView()
+        {
+            RegistrationLoginWindow registrationloginWindow = new RegistrationLoginWindow();
+            registrationloginWindow.ShowDialog();
+            if (registrationloginWindow.User.Username != string.Empty)
+            {
+                _user = registrationloginWindow.User;
+                ABH = 40;
+                ABW = 40;
+                ABM = new Thickness(5, 5, 5, 5);
+                RBH = 0;
+                RBW = 0;
+                RBM = new Thickness(0, 0, 0, 0);
+            }
         }
 
         private void CheckGuess()
         {
             if (UserGuess.Length == _gameMode && int.TryParse(UserGuess, out _))
             {
+                UserGuess = string.Empty;
                 if (_canClear)
                 {
                     Clear();
@@ -76,14 +191,14 @@ namespace wpf_final.ViewModels
                     };
                     GuessResults.Add(new ObservableCollection<GuessResult>(victory));
                     _canClear = true;
-                    if (User.Username != string.Empty)
+                    if (_user.Username != string.Empty)
                     {
-                        if (10000 / attempts > User.ModeScore[_gameMode])
+                        if (10000 / attempts > _user.ModeScore[_gameMode])
                         {
-                            User.ModeScore[_gameMode] = 10000 / attempts;
+                            _user.ModeScore[_gameMode] = 12345 / attempts;
                         }
                         var database = new UsersDatabase();
-                        database.AddUser(User);
+                        database.AddUser(_user);
                     }
                 }
             }
@@ -99,22 +214,26 @@ namespace wpf_final.ViewModels
         private void ChangeModeToThree()
         {
             _gameMode = 3;
+            UserGuess = string.Empty;
             Clear();
 
         }
         private void ChangeModeToFive()
         {
             _gameMode = 5;
+            UserGuess = string.Empty;
             Clear();
         }
         private void ChangeModeToSeven()
         {
             _gameMode = 7;
+            UserGuess = string.Empty;
             Clear();
         }
         private void ChangeModeToNine()
         {
             _gameMode = 9;
+            UserGuess = string.Empty;
             Clear();
         }
     }

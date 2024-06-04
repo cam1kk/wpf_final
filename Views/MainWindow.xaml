@@ -24,17 +24,17 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <WrapPanel Width="100" Height="100" Grid.RowSpan="2">
-            <Button Grid.Column="0" Width="40" Height="40" Margin="5 5 5 5" Click="RegistrationButton_Click" Background="#424e74" Name="registrationButton">
+            <Button Grid.Column="0" Width="{Binding RBW}" Height="{Binding RBH}" Margin="{Binding RBM}" Background="#424e74" Name="registrationButton" Command="{Binding RegistrationCommand}">
                 <StackPanel Orientation="Horizontal" Name="picture">
                     <Image Source="/İmage/registration.png" Width="30" Height="30"/>
                 </StackPanel>
             </Button>
-            <Button Grid.Column="1" Width="40" Height="40" Margin="5 5 5 5" Background="#424e74" Click="AccountButton_Click" Name="accountButton">
+            <Button Grid.Column="1" Width="{Binding ABW}" Height="{Binding ABH}" Margin="{Binding ABM}" Background="#424e74" Name="accountButton" Command="{Binding AccountCommand}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/İmage/login.png" Width="30" Height="30"/>
                 </StackPanel>
             </Button>
-            <Button Grid.Column="0" Width="40" Height="40" Margin="5 5 5 5" Click="LeaderboardsButton_Click" Background="#424e74" Name="leaderboardsButton">
+            <Button Grid.Column="0" Width="40" Height="40" Margin="5 5 5 5" Background="#424e74" Name="leaderboardsButton" Command="{Binding LeaderboardsCommand}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/İmage/leaderboards.png" Width="30" Height="30"/>
                 </StackPanel>

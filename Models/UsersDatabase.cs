@@ -40,11 +40,13 @@ namespace wpf_final.Models
         }
         public void AddUser(User user)
         {
+            Deserialize();
             foreach (var item in _users)
             {
                 if (item.Username == user.Username)
                 {
                     _users.Remove(item);
+                    break;
                 }
             }
             _users.Add(user);

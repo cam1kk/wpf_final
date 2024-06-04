@@ -19,55 +19,15 @@ namespace wpf_final.Views
 {
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(User? user = null)
         {
             InitializeComponent();
-            DataContext = new MainViewModel(_gameMode);
+            if (user == null)
+            {
+                user = new User() { Username = string.Empty };
+            }
+            DataContext = new MainViewModel(5, user);
             fiveButton.IsEnabled = false;
-
-            accountButton.Height = 0;
-            accountButton.Width = 0;
-            accountButton.Margin = new Thickness(0, 0, 0, 0);
-        }
-
-        public User User { get; set; }
-        private int _gameMode = 5;
-
-        private void RegistrationButton_Click(object sender, RoutedEventArgs e)
-        {
-            RegistrationLoginWindow registrationloginWindow = new RegistrationLoginWindow();
-            registrationloginWindow.ShowDialog();
-            if (registrationloginWindow.User.Username != string.Empty)
-            {
-                User = registrationloginWindow.User;
-                (DataContext as MainViewModel).User = User;
-                accountButton.Height = 40;
-                accountButton.Width = 40;
-                accountButton.Margin = new Thickness(5, 5, 5, 5);
-                registrationButton.Height = 0;
-                registrationButton.Width = 0;
-                registrationButton.Margin = new Thickness(0, 0, 0, 0);
-            }
-        }
-
-        private void LeaderboardsButton_Click(object sender, RoutedEventArgs e)
-        {
-            LeaderboardsWindow leaderboardsWindow = new LeaderboardsWindow(_gameMode);
-            leaderboardsWindow.ShowDialog();
-        }
-        private void AccountButton_Click(object sender, RoutedEventArgs e)
-        {
-            PersonalAccountWindow personalAccountWindow = new PersonalAccountWindow(User, _gameMode);
-            personalAccountWindow.ShowDialog();
-            if (personalAccountWindow.isLoggedOut)
-            {
-                accountButton.Height = 0;
-                accountButton.Width = 0;
-                accountButton.Margin = new Thickness(0, 0, 0, 0);
-                registrationButton.Height = 40;
-                registrationButton.Width = 40;
-                registrationButton.Margin = new Thickness(5, 5, 5, 5);
-            }
         }
 
         private void threeButton_Click(object sender, RoutedEventArgs e)
@@ -76,8 +36,6 @@ namespace wpf_final.Views
             fiveButton.IsEnabled = true;
             sevenButton.IsEnabled = true;
             nineButton.IsEnabled = true;
-            GuessTextBox.Text = string.Empty;
-            _gameMode = 3;
         }
 
         private void fiveButton_Click(object sender, RoutedEventArgs e)
@@ -86,8 +44,6 @@ namespace wpf_final.Views
             fiveButton.IsEnabled = false;
             sevenButton.IsEnabled = true;
             nineButton.IsEnabled = true;
-            GuessTextBox.Text = string.Empty;
-            _gameMode = 5;
         }
 
         private void sevenButton_Click(object sender, RoutedEventArgs e)
@@ -96,8 +52,6 @@ namespace wpf_final.Views
             fiveButton.IsEnabled = true;
             sevenButton.IsEnabled = false;
             nineButton.IsEnabled = true;
-            GuessTextBox.Text = string.Empty;
-            _gameMode = 7;
         }
 
         private void nineButton_Click(object sender, RoutedEventArgs e)
@@ -106,8 +60,6 @@ namespace wpf_final.Views
             fiveButton.IsEnabled = true;
             sevenButton.IsEnabled = true;
             nineButton.IsEnabled = false;
-            GuessTextBox.Text = string.Empty;
-            _gameMode = 9;
         }
     }
 }
