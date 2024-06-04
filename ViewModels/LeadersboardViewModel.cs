@@ -24,8 +24,26 @@ namespace wpf_final.ViewModels
                 }
             }
             players = players.ToList().OrderByDescending(p => p.Score).ToList();
+            int positions = 1;
             foreach (var item in players)
             {
+                item.Pos = positions++;
+                if (item.Pos == 1)
+                {
+                    item.Color = "#ffd700";
+                }
+                else if (item.Pos == 2)
+                {
+                    item.Color = "#c0c0c0";
+                }
+                else if (item.Pos == 3)
+                {
+                    item.Color = "#cd7f32";
+                }
+                else
+                {
+                    item.Color = "Black";
+                }
                 Players.Add(item);
             }
         }

@@ -10,5 +10,7 @@ namespace wpf_final.Models
     {
         public string Username { get; set; } = string.Empty;
         public int Score { get; set; }
+        public int Pos { get; set; }
+        public string Color { get; set; } = string.Empty;
     }
 }

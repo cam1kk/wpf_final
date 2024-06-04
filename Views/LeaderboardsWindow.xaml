@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_final.Views"
         mc:Ignorable="d"
-        Title="Leaderboards" Height="450" Width="425">
+        Title="Leaderboards" Height="450" Width="420">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -20,15 +20,19 @@
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Player: " FontWeight="SemiBold"/>
-                        <TextBlock Grid.Column="1" Text="{Binding Username}" FontWeight="SemiBold"/>
-                        <TextBlock Grid.Column="2" Text="Score: " FontWeight="SemiBold"/>
-                        <TextBlock Grid.Column="3" Text="{Binding Score}"/>
+                        <TextBlock Foreground="{Binding Color}" Grid.Column="0" Text="Pos: " FontWeight="Bold"/>
+                        <TextBlock Foreground="{Binding Color}" Grid.Column="1" Text="{Binding Pos}" FontWeight="SemiBold"/>
+                        <TextBlock Foreground="{Binding Color}" Grid.Column="2" Text="Player: " FontWeight="Bold"/>
+                        <TextBlock Foreground="{Binding Color}" Grid.Column="3" Text="{Binding Username}" FontWeight="SemiBold"/>
+                        <TextBlock Foreground="{Binding Color}" Grid.Column="4" Text="Score: " FontWeight="Bold"/>
+                        <TextBlock Foreground="{Binding Color}" Grid.Column="5" Text="{Binding Score}" FontWeight="SemiBold"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
