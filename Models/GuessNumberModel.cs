@@ -12,7 +12,7 @@ namespace wpf_final.Models
 
         public GuessNumberModel(int digitsCount)
         {
-            Update(_digitsCount);
+            Update(digitsCount);
         }
 
         public void Update(int digitsCount)

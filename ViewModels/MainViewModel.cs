@@ -106,8 +106,8 @@ namespace wpf_final.ViewModels
 
         public MainViewModel(int gameMode, User user)
         {
-            _model = new GuessNumberModel(_gameMode);
             _gameMode = gameMode;
+            _model = new GuessNumberModel(_gameMode);
             GuessResults = new ObservableCollection<ObservableCollection<GuessResult>>();
             CheckCommand = new DelegateCommand(CheckGuess);
             ThreeCommand = new DelegateCommand(ChangeModeToThree);
@@ -168,13 +168,13 @@ namespace wpf_final.ViewModels
         {
             if (UserGuess.Length == _gameMode && int.TryParse(UserGuess, out _))
             {
-                UserGuess = string.Empty;
                 if (_canClear)
                 {
                     Clear();
                     _canClear = false;
                 }
                 var result = _model.CheckGuess(UserGuess);
+                UserGuess = string.Empty;
                 attempts++;
                 GuessResults.Add(new ObservableCollection<GuessResult>(result));
                 if (result.All(g => g.Color == "Green"))
