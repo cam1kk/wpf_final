@@ -1,8 +1,8 @@
 ﻿<Window x:Class="wpf_final.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Guess the Number" Height="350" Width="525">
-    <Grid>
+        Title="Guess the Number" Height="400" Width="700">
+    <Grid x:Name="grid">
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="#bedfff" Offset="0.1" />
@@ -23,37 +23,39 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="0" Grid.Row="0" Width="40" Height="40" Margin="5 5 5 5" Click="RegistrationButton_Click" Background="#424e74">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="/İmage/registration.png" Width="30" Height="30"/>
-            </StackPanel>
-        </Button>
-        <Button Grid.Column="1" Grid.Row="0" Width="40" Height="40" Margin="5 5 5 5" Background="#424e74" Click="AccountButton_Click">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="/İmage/login.png" Width="30" Height="30"/>
-            </StackPanel>
-        </Button>
-        <Button Grid.Column="0" Grid.Row="1" Width="40" Height="40" Margin="5 5 5 5" Click="LeaderboardsButton_Click" Background="#424e74">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="/İmage/leaderboards.png" Width="30" Height="30"/>
-            </StackPanel>
-        </Button>
-        <Button Grid.Column="3" Grid.Row="0" Width="40" Height="40" Margin="5 5 5 5" Background="#424e74">
+        <WrapPanel Width="100" Height="100" Grid.RowSpan="2">
+            <Button Grid.Column="0" Width="40" Height="40" Margin="5 5 5 5" Click="RegistrationButton_Click" Background="#424e74" Name="registrationButton">
+                <StackPanel Orientation="Horizontal" Name="picture">
+                    <Image Source="/İmage/registration.png" Width="30" Height="30"/>
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="1" Width="40" Height="40" Margin="5 5 5 5" Background="#424e74" Click="AccountButton_Click" Name="accountButton">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/İmage/login.png" Width="30" Height="30"/>
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="0" Width="40" Height="40" Margin="5 5 5 5" Click="LeaderboardsButton_Click" Background="#424e74" Name="leaderboardsButton">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/İmage/leaderboards.png" Width="30" Height="30"/>
+                </StackPanel>
+            </Button>
+        </WrapPanel>
+        <Button Grid.Column="3" Grid.Row="0" Width="40" Height="40" Margin="5 5 5 5" Background="#424e74" Name="threeButton" Click="threeButton_Click" Command="{Binding ThreeCommand}">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/İmage/icon3.png" Width="30" Height="30"/>
             </StackPanel>
         </Button>
-        <Button Grid.Column="4" Grid.Row="0" Width="40" Height="40" Margin="5 5 5 5" Background="#424e74">
+        <Button Grid.Column="4" Grid.Row="0" Width="40" Height="40" Margin="5 5 5 5" Background="#424e74" Name="fiveButton" Click="fiveButton_Click" Command="{Binding FiveCommand}">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/İmage/icon5.png" Width="30" Height="30"/>
             </StackPanel>
         </Button>
-        <Button Grid.Column="3" Grid.Row="1" Width="40" Height="40" Margin="5 5 5 5" Background="#424e74">
+        <Button Grid.Column="3" Grid.Row="1" Width="40" Height="40" Margin="5 5 5 5" Background="#424e74" Name="sevenButton" Click="sevenButton_Click" Command="{Binding SevenCommand}">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/İmage/icon7.png" Width="30" Height="30"/>
             </StackPanel>
         </Button>
-        <Button Grid.Column="4" Grid.Row="1" Width="40" Height="40" Margin="5 5 5 5" Background="#424e74">
+        <Button Grid.Column="4" Grid.Row="1" Width="40" Height="40" Margin="5 5 5 5" Background="#424e74" Name="nineButton" Click="nineButton_Click" Command="{Binding NineCommand}">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/İmage/icon9.png" Width="30" Height="30"/>
             </StackPanel>

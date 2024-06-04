@@ -15,33 +15,23 @@
                 <GradientStop Color="#424e74" Offset="1.0" />
             </LinearGradientBrush>
         </Grid.Background>
-        
-        <ListView Margin="10" Grid.Row="0">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Position" Width="100">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Position}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Login" Width="200">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Login}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Score" Width="100">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Score}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <ListBox Grid.Row="0" ItemsSource="{Binding Players}" Margin="10">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Player: " FontWeight="SemiBold"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Username}" FontWeight="SemiBold"/>
+                        <TextBlock Grid.Column="2" Text="Score: " FontWeight="SemiBold"/>
+                        <TextBlock Grid.Column="3" Text="{Binding Score}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>

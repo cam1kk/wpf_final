@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_final.Views"
         mc:Ignorable="d"
-        Title="Personal Cabinet" Height="200" Width="350" FontSize="14" FontWeight="Bold">
+        Title="Personal Cabinet" Height="220" Width="350" FontSize="14" FontWeight="Bold">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -16,14 +16,10 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Image Source="/İmage/account.png" Width="100" Height="100" Margin="0,0,231,65"/>
-        <TextBlock Text="NickName" Margin="10,110,0,0" Foreground="#ffa500" FontSize="20"/>
-        <TextBlock Text="Score" Margin="10,150,0,0"/>
-        <TextBlock Text="Top position" Margin="10,165,0,0"/>
+        <TextBlock Text="NickName" Margin="10,110,0,0" Foreground="#ffa500" FontSize="20" Name="Username"/>
+        <TextBlock Text="Score: ---" Margin="10,150,0,0" Name="Score"/>
 
 
-        <Button Content="Change avatar" Margin="235,0,0,125" Height="35" Width="100" Background="#424e74" Foreground="#bedfff"/>
-        <Button Content="Change pass" Margin="235,0,0,45" Height="35" Width="100" Background="#424e74" Foreground="#bedfff"/>
-        <Button Content="Change login" Margin="235,45,0,0" Height="35" Width="100" Background="#424e74" Foreground="#bedfff"/>
-        <Button Content="Log out" Margin="235,125,0,0" Height="35" Width="100" Background="#424e74" Foreground="#bedfff"/>
+        <Button Content="Log out" Margin="235,125,0,0" Height="35" Width="100" Background="#424e74" Foreground="#bedfff" Click="Button_Click"/>
     </Grid>
 </Window>

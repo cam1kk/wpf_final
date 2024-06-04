@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using wpf_final.Models;
+using wpf_final.ViewModels;
 
 namespace wpf_final.Views
 {
@@ -19,9 +22,10 @@ namespace wpf_final.Views
     /// </summary>
     public partial class LeaderboardsWindow : Window
     {
-        public LeaderboardsWindow()
+        public LeaderboardsWindow(int gameMode)
         {
             InitializeComponent();
+            DataContext = new LeadersboardViewModel(gameMode);
         }
     }
 }

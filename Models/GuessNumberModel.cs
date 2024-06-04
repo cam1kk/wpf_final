@@ -1,41 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Controls;
 
 namespace wpf_final.Models
 {
     public class GuessNumberModel
     {
         private readonly Random _random = new Random();
-        public string TargetNumber { get; private set; }
+        private string _targetNumber = string.Empty;
+        private int _digitsCount;
 
-        public GuessNumberModel()
+        public GuessNumberModel(int digitsCount)
         {
-            GenerateTargetNumber();
+            Update(_digitsCount);
         }
 
-        public void GenerateTargetNumber()
+        public void Update(int digitsCount)
         {
-            TargetNumber = _random.Next(1, 100000).ToString("D5");
+            _digitsCount = digitsCount;
+            _targetNumber = _random.Next(1, int.Parse(Math.Pow(10, _digitsCount).ToString()) ).ToString($"D{_digitsCount}");
         }
 
         public List<GuessResult> CheckGuess(string userGuess)
         {
-            var results = new List<GuessResult>()
+            var results = new List<GuessResult>();
+            for (int i = 0; i < _digitsCount; i++)
             {
-                new GuessResult("_", "_"),
-                new GuessResult("_", "_"),
-                new GuessResult("_", "_"),
-                new GuessResult("_", "_"),
-                new GuessResult("_", "_")
-            };
-            var used = new bool[5] { false, false, false, false, false };
+                results.Add(new GuessResult("_", "_"));
+            }
+            var green_cells = new bool[_digitsCount];
+            for (int i = 0; i < _digitsCount; i++)
+            {
+                green_cells[i] = false;
+            }
+            var yellow_cells = new bool[_digitsCount];
+            for (int i = 0; i < _digitsCount; i++)
+            {
+                yellow_cells[i] = false;
+            }
 
             for (int i = 0; i < results.Count; i++)
             {
-                if (userGuess[i] == TargetNumber[i])
+                if (userGuess[i] == _targetNumber[i])
                 {
                     results[i] = new GuessResult($" {userGuess[i]} ", "Green");
-                    used[i] = true;
+                    green_cells[i] = true;
                 }
             }
 
@@ -43,22 +52,23 @@ namespace wpf_final.Models
             {
                 for (int j = 0; j < results.Count; j++)
                 {
-                    if (i != j && !used[i] && !used[j] && userGuess[i] == TargetNumber[j])
+                    if (i != j && !green_cells[i] && !green_cells[j] && !yellow_cells[j] && userGuess[j] == _targetNumber[i])
                     {
-                        results[i] = new GuessResult($" {userGuess[i]} ", "Goldenrod");
-                        used[i] = true;
+                        results[j] = new GuessResult($" {userGuess[j]} ", "Goldenrod");
+                        yellow_cells[j] = true;
+                        break;
                     }
                 }
             }
 
             for (int i = 0; i < results.Count; i++)
             {
-                if (!used[i])
+                if (!yellow_cells[i] && !green_cells[i])
                 {
                     results[i] = new GuessResult($" {userGuess[i]} ", "Gray");
                 }
             }
-            
+
             return results;
         }
     }

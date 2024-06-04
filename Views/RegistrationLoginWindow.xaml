@@ -19,7 +19,6 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-
         <StackPanel Grid.Column="0" Margin="10" VerticalAlignment="Top">
             <TextBlock Text="Register" HorizontalAlignment="Center" Margin="0,0,0,10" FontSize="40" Foreground="#ffa500">
                 <TextBlock.Effect>
@@ -27,13 +26,13 @@
                 </TextBlock.Effect>
             </TextBlock>
             <TextBlock Text="Email:" Margin="0,0,0,5"/>
-            <TextBox x:Name="EmailTextBox" Margin="0,0,0,5"/>
+            <TextBox x:Name="RegistrationEmail" Margin="0,0,0,5" Text=""/>
             <TextBlock Text="Username:" Margin="0,0,0,5"/>
-            <TextBox x:Name="UsernameTextBox" Margin="0,0,0,5"/>
+            <TextBox x:Name="RegistrationUsername" Margin="0,0,0,5" Text=""/>
             <TextBlock Text="Password:" Margin="0,0,0,5"/>
-            <PasswordBox x:Name="PasswordBox" Margin="0,0,0,10"/>
-            <Button x:Name="RegisterButton" Content="Register" Margin="0,20,0,0" Background="#424e74" Foreground="#bedfff"/>
-            <TextBlock x:Name="RegistrationError" Foreground="Red" Text="Error"/>
+            <TextBox x:Name="RegistrationPassword" Margin="0,0,0,10" Text=""/>
+            <Button x:Name="RegisterButton" Content="Register" Margin="0,20,0,0" Background="#424e74" Foreground="#bedfff" Click="RegisterButton_Click"/>
+            <TextBlock x:Name="RegisterError" Foreground="Red" Text=""/>
         </StackPanel>
 
 
@@ -44,11 +43,11 @@
                 </TextBlock.Effect>
             </TextBlock>
             <TextBlock Text="Username:" Margin="0,0,0,5"/>
-            <TextBox x:Name="LoginUsernameTextBox" Margin="0,0,0,5"/>
+            <TextBox x:Name="LoginUsername" Margin="0,0,0,5" Text=""/>
             <TextBlock Text="Password:" Margin="0,0,0,5"/>
-            <PasswordBox x:Name="LoginPasswordBox" Margin="0,0,0,10"/>
-            <Button x:Name="LoginButton" Content="Login" Margin="0,72,0,0" Background="#424e74" Foreground="#bedfff"/>
-            <TextBlock x:Name="LoginError" Foreground="Red" Text="Error"/>
+            <TextBox x:Name="LoginPassword" Margin="0,0,0,10" Text=""/>
+            <Button x:Name="LoginButton" Content="Login" Margin="0,72,0,0" Background="#424e74" Foreground="#bedfff" Click="LoginButton_Click"/>
+            <TextBlock x:Name="LoginError" Foreground="Red" Text=""/>
         </StackPanel>
         
     </Grid>
