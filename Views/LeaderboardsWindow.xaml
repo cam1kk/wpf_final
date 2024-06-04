@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_final.Views"
         mc:Ignorable="d"
-        Title="Leaderboards" Height="450" Width="420">
+        Title="Leaderboards" Height="450" Width="400">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -18,14 +18,14 @@
         <ListBox Grid.Row="0" ItemsSource="{Binding Players}" Margin="10">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid HorizontalAlignment="Center">
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="90"/>
                             <ColumnDefinition Width="70"/>
-                            <ColumnDefinition Width="70"/>
-                            <ColumnDefinition Width="70"/>
-                            <ColumnDefinition Width="70"/>
-                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="50"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Foreground="{Binding Color}" Grid.Column="0" Text="Pos: " FontWeight="Bold"/>
                         <TextBlock Foreground="{Binding Color}" Grid.Column="1" Text="{Binding Pos}" FontWeight="SemiBold"/>
